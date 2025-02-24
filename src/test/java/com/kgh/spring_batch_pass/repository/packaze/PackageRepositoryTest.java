@@ -78,4 +78,21 @@ public class PackageRepositoryTest {
 
     }
 
+    @Test
+    public void test_delete(){
+
+        //given
+        PackageEntity packageEntity = new PackageEntity();
+        packageEntity.setPackageName("이용권 제거");
+        packageEntity.setCount(1);
+        PackageEntity newPackageEntity = packageRepository.save(packageEntity);
+
+        //when
+        packageRepository.deleteById(newPackageEntity.getPackageSeq());
+
+        //then
+        assertTrue(packageRepository.findById(newPackageEntity.getPackageSeq()).isEmpty());
+
+    }
+
 }
