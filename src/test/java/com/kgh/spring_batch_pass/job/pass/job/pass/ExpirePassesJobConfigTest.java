@@ -41,12 +41,10 @@ class ExpirePassesJobConfigTest {
         addPassEntities(5);
 
         // when
-
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         JobInstance jobInstance = jobExecution.getJobInstance();
 
         // then
-
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
         assertEquals("expirePassesJob", jobInstance.getJobName());
     }

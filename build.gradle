@@ -31,6 +31,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" // @ConfigurationProperties
 	annotationProcessor 'org.projectlombok:lombok'
+	// mapstruct
+	implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
 
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'

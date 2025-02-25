@@ -67,11 +67,12 @@ public class PackageRepositoryTest {
         packageEntity.setPackageName("이벤트 4개월");
         packageEntity.setPeriod(90);
         packageRepository.save(packageEntity);
+
         //when
         int updatedCount = packageRepository.updateCountAndPeriod(packageEntity.getPackageSeq(), 30, 120);
         final PackageEntity updatePacakgeEntity = packageRepository.findById(packageEntity.getPackageSeq()).get();
-        //then
 
+        //then
         assertEquals(1, updatedCount);
         assertEquals(30, updatePacakgeEntity.getCount());
         assertEquals(120, updatePacakgeEntity.getPeriod());
@@ -80,7 +81,6 @@ public class PackageRepositoryTest {
 
     @Test
     public void test_delete(){
-
         //given
         PackageEntity packageEntity = new PackageEntity();
         packageEntity.setPackageName("이용권 제거");
