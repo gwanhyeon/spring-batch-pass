@@ -1,6 +1,7 @@
 package com.kgh.spring_batch_pass.job.notification;
 
 import com.kgh.spring_batch_pass.repository.booking.BookingEntity;
+import com.kgh.spring_batch_pass.repository.booking.BookingStatus;
 import com.kgh.spring_batch_pass.repository.notification.NotificationEntity;
 import com.kgh.spring_batch_pass.repository.notification.NotificationEvent;
 import com.kgh.spring_batch_pass.repository.notification.NotificationModelMapper;
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
 import javax.persistence.EntityManagerFactory;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Configuration
@@ -71,6 +73,7 @@ public class SendNotificationBeforeClassJobConfig {
                 .pageSize(CHUNK_SIZE)
                 // 상태(status)가 준비중이며, 시작일시(startedAt)이 10분 후 시작하는 예약이 알람 대상이 됩니다.
                 .queryString("select b from BookingEntity b join fetch b.userEntity where b.status = :status and b.startedAt <= :startedAt order by b.bookingSeq")
+                .parameterValues(Map.of("status", BookingStatus.READY, "startedAt", LocalDateTime.now().plusMinutes(10)))
                 .build();
 
     }

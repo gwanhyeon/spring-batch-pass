@@ -33,7 +33,7 @@ public class AddPassesTasklet implements Tasklet {
         // 이용권 시작 일시 1일 전 user group 내 각 사용자에게 이용권을 추가해줍니다.
         final LocalDateTime startedAt = LocalDateTime.now().minusDays(1);
         // 처리가 안된 대량 데이터들만 가져온다.
-        final List<BulkPassEntity> bulkPassEntityList = bulkPassRepository.findByStatusStartedAtGreaterThan(BulkPassStatus.READY, startedAt);
+        final List<BulkPassEntity> bulkPassEntityList = bulkPassRepository.findByStatusAndStartedAtGreaterThan(BulkPassStatus.READY, startedAt);
 
         int count = 0;
 

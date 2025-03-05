@@ -1,5 +1,6 @@
 package com.kgh.spring_batch_pass.repository.booking;
 
+import com.kgh.spring_batch_pass.BaseEntity;
 import com.kgh.spring_batch_pass.repository.pass.PassEntity;
 import com.kgh.spring_batch_pass.repository.user.UserEntity;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @ToString
 @Entity
 @Table(name ="booking")
-public class BookingEntity {
+public class BookingEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
